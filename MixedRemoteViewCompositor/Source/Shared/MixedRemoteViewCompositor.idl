@@ -15,16 +15,17 @@ import "Windows.Storage.idl";
 import "Windows.Storage.Streams.idl";
 
 // Additional imports to ensure that all required headers are included
-cpp_quote("#if defined(__cplusplus)")
-cpp_quote("}")
-cpp_quote("#endif // defined(__cplusplus)")
+//cpp_quote("#if defined(__cplusplus)")
+//cpp_quote("}")
+//cpp_quote("#endif // defined(__cplusplus)")
 cpp_quote("#include <Windows.Foundation.h>")
 cpp_quote("#if !defined(__windows2Enetworking2Esockets_h__)")
 cpp_quote("#include <Windows.Networking.Sockets.h>")
 cpp_quote("#endif // !defined(__windows2Enetworking2Esockets_h__)")
-cpp_quote("#if defined(__cplusplus)")
-cpp_quote("extern \"C\" {")
-cpp_quote("#endif // defined(__cplusplus)")
+
+//cpp_quote("#if defined(__cplusplus)")
+//cpp_quote("extern \"C\" {")
+//cpp_quote("#endif // defined(__cplusplus)")
 
 namespace MixedRemoteViewCompositor
 {
@@ -55,11 +56,11 @@ namespace MixedRemoteViewCompositor
     typedef enum PayloadType PayloadType;
     typedef enum SampleFlags SampleFlags;
 
-    typedef struct MF_FLOAT2 MF_FLOAT2;
-    typedef struct MFCameraIntrinsic_PinholeCameraModel MFCameraIntrinsic_PinholeCameraModel;
-    typedef struct MFCameraIntrinsic_DistortionModel MFCameraIntrinsic_DistortionModel;
-    typedef struct MFPinholeCameraIntrinsic_IntrinsicModel MFPinholeCameraIntrinsic_IntrinsicModel;
-    typedef struct MFPinholeCameraIntrinsics MFPinholeCameraIntrinsics;
+    typedef struct MRV_MF_FLOAT2 MRV_MF_FLOAT2;
+    typedef struct MRV_MFCameraIntrinsic_PinholeCameraModel MRV_MFCameraIntrinsic_PinholeCameraModel;
+    typedef struct MRV_MFCameraIntrinsic_DistortionModel MRV_MFCameraIntrinsic_DistortionModel;
+    typedef struct MRV_MFPinholeCameraIntrinsic_IntrinsicModel MRV_MFPinholeCameraIntrinsic_IntrinsicModel;
+    typedef struct MRV_MFPinholeCameraIntrinsics MRV_MFPinholeCameraIntrinsics;
 
     typedef struct PayloadHeader PayloadHeader;
     typedef struct MediaTypeDescription MediaTypeDescription;
@@ -234,21 +235,21 @@ namespace MixedRemoteViewCompositor {
     };
 
     [version(1.0)]
-    struct MF_FLOAT2
+    struct MRV_MF_FLOAT2
     {
         FLOAT   x;
         FLOAT   y;
     };
 
     [version(1.0)]
-    struct MFCameraIntrinsic_PinholeCameraModel
+    struct MRV_MFCameraIntrinsic_PinholeCameraModel
     {
-        MF_FLOAT2   FocalLength;      // In Image space
-        MF_FLOAT2   PrincipalPoint;   // In Image space
+        MRV_MF_FLOAT2   FocalLength;      // In Image space
+        MRV_MF_FLOAT2   PrincipalPoint;   // In Image space
     };
 
     [version(1.0)]
-    struct MFCameraIntrinsic_DistortionModel
+    struct MRV_MFCameraIntrinsic_DistortionModel
     {
         FLOAT Radial_k1;
         FLOAT Radial_k2;
@@ -258,19 +259,19 @@ namespace MixedRemoteViewCompositor {
     };
 
     [version(1.0)]
-    struct MFPinholeCameraIntrinsic_IntrinsicModel
+    struct MRV_MFPinholeCameraIntrinsic_IntrinsicModel
     {
         UINT32 Width;
         UINT32 Height;
-        MFCameraIntrinsic_PinholeCameraModel CameraModel;
-        MFCameraIntrinsic_DistortionModel DistortionModel;
+        MRV_MFCameraIntrinsic_PinholeCameraModel CameraModel;
+        MRV_MFCameraIntrinsic_DistortionModel DistortionModel;
     };
 
     [version(1.0)]
-    struct MFPinholeCameraIntrinsics
+    struct MRV_MFPinholeCameraIntrinsics
     {
         UINT32 count;
-        MFPinholeCameraIntrinsic_IntrinsicModel IntrinsicModels;
+        MRV_MFPinholeCameraIntrinsic_IntrinsicModel IntrinsicModels;
     };
 
     [version(1.0)]
@@ -293,7 +294,7 @@ namespace MixedRemoteViewCompositor {
         Windows.Foundation.Numerics.Matrix4x4 worldToCameraMatrix;
         Windows.Foundation.Numerics.Matrix4x4 cameraProjectionTransform;
         Windows.Foundation.Numerics.Matrix4x4 cameraViewTransform;
-        MFPinholeCameraIntrinsics cameraIntrinsics;
+        MRV_MFPinholeCameraIntrinsics cameraIntrinsics;
     };
 
     [version(1.0)]
